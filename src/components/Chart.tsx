@@ -52,7 +52,7 @@ const Chart = () => {
             <h1 className="text-xl mb-2 text-center">
                 Chart
             </h1>
-            <article className="bg-white shadow rounded  py-10 pr-10  h-[400px]">
+            <article className="bg-white shadow rounded  py-10 pr-5  h-[400px]">
                 <ChartRenderer />
             </article>
         </section>
@@ -86,7 +86,6 @@ const ChartRenderer = () => {
                 margin={{
                     top: 5,
                     right: 30,
-                    left: 20,
                     bottom: 5,
                 }}
             >
