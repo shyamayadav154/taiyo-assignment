@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { formatNumber } from "../lib/util";
-import {icon} from 'leaflet'
+import { icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const position = [0, 0];
@@ -36,10 +36,8 @@ function Map() {
             <h1 className="text-xl text-center mb-2">
                 Map
             </h1>
-            <section className="h-[500px] w-full]">
-                <article className=" h-full w-full overflow-hidden rounded shadow">
+            <section className="h-[300px] w-full  rounded bg-white overflow-hidden">
                     <MapWithMarker />
-                </article>
             </section>
         </section>
     );
@@ -47,7 +45,11 @@ function Map() {
 
 const MapWithMarker = () => {
     const { data: markers, isLoading, isError } = useContryCovidCases();
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) {
+        return (
+            <div className="h-full w-full grid place-content-center">Loading...</div>
+        );
+    }
     if (isError) return <p>Error...</p>;
 
     return (

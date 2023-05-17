@@ -50,7 +50,15 @@ const Chart = () => {
     const { data: graphData, isLoading, isError } = useGraphData();
     if (isLoading) {
         return (
-            <div className="min-h-[420px] grid place-content-center">Loading...</div>
+            <>
+                <h1 className="text-xl  text-center">
+                    Chart
+                </h1>
+
+                <div className="min-h-[420px] rounded grid place-content-center bg-white">
+                    Loading...
+                </div>
+            </>
         );
     }
     if (isError) return <div>Error</div>;

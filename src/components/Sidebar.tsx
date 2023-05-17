@@ -10,7 +10,7 @@ function Sidebar() {
     const [sidebarOpen, setSidebarOpen] = useAtom(isSidebarOpenAtom);
     const closeSidebar = () => setSidebarOpen(false);
     return (
-        <aside className="">
+        <aside className="bg-white">
             <MobileSidebar
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}

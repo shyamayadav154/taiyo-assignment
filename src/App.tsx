@@ -6,10 +6,10 @@ import Header from "./components/Header";
 
 function App() {
     return (
-        <main className="">
-            <section className=" bg-white  h-screen flex">
+        <main className="bg-gray-50">
+            <section className="   h-screen flex">
                 <Sidebar />
-                <section className="border-x bg-gray-100 flex-1 p-5">
+                <section className="border-x  flex-1 p-5">
                     <Header/> 
                     <Routes>
                         <Route path="/" index element={<Navigate to="/contacts" />} />

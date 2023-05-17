@@ -53,7 +53,7 @@ const ContactList = (
                 </article>
             )}
 
-            <article className="grid grid-cols-2 m-5 gap-5">
+            <article className="grid sm:grid-cols-2 m-5 gap-5">
                 {allContacts.map((contact) => (
                     <ContactCard
                         openContactForm={openContactForm}
