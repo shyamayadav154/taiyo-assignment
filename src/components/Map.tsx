@@ -37,7 +37,7 @@ function Map() {
                 Map
             </h1>
             <section className="h-[300px] w-full  rounded bg-white overflow-hidden">
-                    <MapWithMarker />
+                <MapWithMarker />
             </section>
         </section>
     );
