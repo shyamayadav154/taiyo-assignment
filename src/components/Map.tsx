@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { formatNumber } from "../lib/util";
-
+import {icon} from 'leaflet'
 import "leaflet/dist/leaflet.css";
 
 const position = [0, 0];
@@ -69,10 +69,16 @@ const MapWithMarker = () => {
 };
 
 const SingleMarkerWithPopup = ({ marker }: { marker: CountryCovidCase }) => {
+    const customIcon = icon({
+        iconUrl: "https://i.imgur.com/zrScfVg.png",
+        iconSize: [30, 30],
+    });
+
     return (
         <Marker
             key={marker.country}
             position={[marker.countryInfo.lat, marker.countryInfo.long]}
+            icon={customIcon}
         >
             <Popup>
                 <article className="space-y-1 ">
