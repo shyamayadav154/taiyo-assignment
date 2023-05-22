@@ -3,7 +3,7 @@ import FormInput from "../components/FormInput";
 import RadioGroup from "../components/RadioGroup";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import  {
+import {
     addContact,
     editContact,
     removeContact,
@@ -39,7 +39,6 @@ const ContactList = (
 
     return (
         <section className="mx-auto max-w-md flex flex-col  items-center">
-            
             <Button
                 onClick={openContactForm}
             >
@@ -86,7 +85,6 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
 
     return (
         <div className="rounded shadow p-5 bg-white">
-            {contact.id}
             <ul className="text-lg">
                 <li>
                     <strong>Name:</strong> {contact.firstName} {contact.lastName}
@@ -96,10 +94,10 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
                 </li>
             </ul>
             <div className="flex items-end justify-end gap-2.5 mt-2.5">
-                <Button onClick={editContact} size='sm' variant="secondary">
+                <Button onClick={editContact} size="sm" variant="secondary">
                     Edit
                 </Button>
-                <Button onClick={deleteContact} size='sm' variant="danger">
+                <Button onClick={deleteContact} size="sm" variant="danger">
                     Delete
                 </Button>
             </div>
@@ -107,9 +105,8 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
     );
 };
 
-
 export type ContactWithoutId = Omit<Contact, "id">;
-const initalFormData: ContactWithoutId= {
+const initalFormData: ContactWithoutId = {
     firstName: "",
     lastName: "",
     status: "inactive",
@@ -118,11 +115,11 @@ const initalFormData: ContactWithoutId= {
 const ContactForm = (
     { closeContactForm }: { closeContactForm: () => void },
 ) => {
-    const contactToEdit= useSelector((state: RootState) =>
+    const contactToEdit = useSelector((state: RootState) =>
         state.contacts.contactToEdit
     );
     const isEditing = Boolean(contactToEdit);
-    const [formData, setFormData] = useState<Contact|ContactWithoutId>(
+    const [formData, setFormData] = useState<Contact | ContactWithoutId>(
         contactToEdit ?? initalFormData,
     );
     const dispatch = useDispatch();
