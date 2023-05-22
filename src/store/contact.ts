@@ -27,9 +27,9 @@ export const contactSlice = createSlice({
         setContactToEdit: (state, action: PayloadAction<Contact>) => {
             state.contactToEdit = action.payload;
         },
-        addContact: (state, action: PayloadAction<Contact>) => {
+        addContact: (state, action: PayloadAction<Omit<Contact,"id">>) => {
             const allContacts = state.allContacts;
-            const newContact = action.payload;
+            const newContact = {id:crypto.randomUUID(),...action.payload};
             state.allContacts = [...allContacts, newContact];
         },
         removeContact: (state, action: PayloadAction<{ id: string }>) => {

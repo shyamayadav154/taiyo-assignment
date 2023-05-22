@@ -3,7 +3,7 @@ import FormInput from "../components/FormInput";
 import RadioGroup from "../components/RadioGroup";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {
+import contact, {
     addContact,
     editContact,
     removeContact,
@@ -11,7 +11,7 @@ import {
     setContactToEdit,
 } from "../store/contact";
 import { RootState } from "../store/store";
-import { Contact } from "../store/contact";
+import type { Contact } from "../store/contact";
 
 function Contacts() {
     const [isContactForm, setIsContactForm] = useState(false);
@@ -39,6 +39,7 @@ const ContactList = (
 
     return (
         <section className="mx-auto max-w-md flex flex-col  items-center">
+            
             <Button
                 onClick={openContactForm}
             >
@@ -105,12 +106,7 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
     );
 };
 
-type FormData = {
-    id: string;
-    firstName: string;
-    lastName: string;
-    status: "active" | "inactive";
-};
+type FormData = Contact;
 
 const initalFormData: FormData = {
     id: crypto.randomUUID(),
