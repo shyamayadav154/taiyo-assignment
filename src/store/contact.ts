@@ -7,6 +7,7 @@ export type Contact = {
     status: "active" | "inactive";
 };
 
+
 type InitialStateType = {
     allContacts: Contact[];
     contactToEdit: Contact | null;

@@ -3,7 +3,7 @@ import FormInput from "../components/FormInput";
 import RadioGroup from "../components/RadioGroup";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import contact, {
+import  {
     addContact,
     editContact,
     removeContact,
@@ -86,6 +86,7 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
 
     return (
         <div className="rounded shadow p-5 bg-white">
+            {contact.id}
             <ul className="text-lg">
                 <li>
                     <strong>Name:</strong> {contact.firstName} {contact.lastName}
@@ -106,10 +107,9 @@ const ContactCard = ({ contact, openContactForm }: ContactCardProps) => {
     );
 };
 
-type FormData = Contact;
 
-const initalFormData: FormData = {
-    id: crypto.randomUUID(),
+export type ContactWithoutId = Omit<Contact, "id">;
+const initalFormData: ContactWithoutId= {
     firstName: "",
     lastName: "",
     status: "inactive",
@@ -118,14 +118,13 @@ const initalFormData: FormData = {
 const ContactForm = (
     { closeContactForm }: { closeContactForm: () => void },
 ) => {
-    const contactToEdit = useSelector((state: RootState) =>
+    const contactToEdit= useSelector((state: RootState) =>
         state.contacts.contactToEdit
     );
-    console.log(contactToEdit);
-    const [formData, setFormData] = useState<FormData>(
+    const isEditing = Boolean(contactToEdit);
+    const [formData, setFormData] = useState<Contact|ContactWithoutId>(
         contactToEdit ?? initalFormData,
     );
-    const isEditing = Boolean(contactToEdit);
     const dispatch = useDispatch();
 
     function onSubmitHandler(e: FormEvent) {
@@ -134,7 +133,7 @@ const ContactForm = (
         if (!firstName || !lastName) return alert("Please fill out all fields");
 
         if (isEditing) {
-            dispatch(editContact(formData));
+            dispatch(editContact(formData as Contact));
             dispatch(removeContactToEdit());
         } else {
             dispatch(addContact(formData));
